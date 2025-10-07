@@ -1,7 +1,18 @@
 use std::io;
 
 fn main() {
+    println!("Welcome to FarenCel!");
+    let opt = get_opt();
+    println!("Enter the temperatue:");
+    let mut temp = String::new();
+    io::stdin().read_line(&mut temp).expect("error while getting temperatue.");
+    let temp:f64 = temp.trim().parse().expect("ENTER NUMBERS ONLY PLEASE!");
 
+    if opt == 1 {
+        println!("Result: {} Degree Celsius.", f_to_c(temp));
+    } else {
+        println!("Result: {} Degree Fahrenheit.", c_to_f(temp));
+    }
 }
 
 fn f_to_c(temp:f64) -> f64{
@@ -25,7 +36,7 @@ fn get_opt() -> u8 {
         } else if opt == 2 {
             return 2;
         } else {
-            println!("WRONG CHOISE!");
+            println!("WRONG CHOICE!\ntry again.");
             continue;
         }
     }
